@@ -12,7 +12,7 @@ def homepage():
 @app.route('/login')
 def loginpage():
     form = LoginForm()
-    return render_template('home.html', title = "Login Page", form=form)
+    return render_template('login.html', title = "Login Page", form=form)
    
 @app.route('/register')
 def registerpage():
