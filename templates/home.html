@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{% if title %}
-		<title>WOB - {{title}} </title>
-	{% else %}
-		<title>WOB - Home Page</title>
-	{% endif %}
-</head>
-<body>
-
-	<h1>This is a Heading</h1>
-	{% for i in posts %}
-		<h2>{{i}}</h2>
-	{%endfor%}
-</body>
-</html>
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>This is a Heading</h1>
+    {% for i in posts %}
+    <h2>{{i}}</h2>
+    {%endfor%}
+{% endblock content %}
