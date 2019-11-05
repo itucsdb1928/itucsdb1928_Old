@@ -1,4 +1,4 @@
-from flask import Flask , render_template
+from flask import Flask ,redirect, render_template,flash,url_for
 from forms import RegistrationForm,LoginForm
 app = Flask(__name__)
 
@@ -12,19 +12,23 @@ status=0
 @app.route('/Home')
 def homepage():
     global status
-    return render_template('home.html',Status =status)
+    return render_template('home.html',Status =status,title = "Home Page")
 
 @app.route('/SignIn')
 def sign_in_page():
     global status
     status= 0
     form = LoginForm()
-    return render_template('home.html',Status =status,title = "Login Page", form=form)
+    return render_template('login.html',Status =status,title = "Login Page", form=form)
 
-@app.route('/SignUp')
+@app.route('/SignUp',methods=['GET','POST'])
 def sign_up_page():
     global status
     status= 0
+    form=RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('homepage'))
     return render_template('register.html',Status=status,title = "Register Page",form= form )
 
 
@@ -33,12 +37,12 @@ def sign_up_page():
 def profile_page():
     global status
     status=1
-    return render_template('home.html',Status=status)
+    return render_template('home.html',Status=status,title = "Profile Page")
 
 @app.route('/Bag')
 def bag_page():
     global status
-    return render_template('home.html',Status =status)
+    return render_template('home.html',Status =status,title = "Bag Page")
    
 
 
