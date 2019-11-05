@@ -19,7 +19,7 @@ def sign_in_page():
     global status
     status= 0
     form = LoginForm()
-    return render_template('home.html',Status =status,title = "Login Page", form=form)
+    return render_template('login.html',Status =status,title = "Login Page", form=form)
 
 @app.route('/SignUp')
 def sign_up_page():
