@@ -24,7 +24,7 @@
                 <li><a href="{{ url_for('homepage') }}">SignOut </a></li>
 
                 {% else %}
-                <li><a href="/SignIn">SignIn </a></li>
+                <li><a href="{{ url_for('sign_in_page') }}">SignIn </a></li>
                 <li><a href="{{ url_for('sign_up_page') }}">SignUp</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('bag_page') }}">Bag</a></li>
