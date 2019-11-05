@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>{{title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -16,19 +16,25 @@
                 <a class="navbar-brand" href="#">WOB</a>
             </div>
             <ul class="nav navbar-nav">
+
                 <li class="active"><a href="#">Home</a></li>
-                {% if title =="Home" or SignIn=="Ali"%}
-                <li><a href="#">Profile {{title}}</a></li>
+
+                {% if Status==1 %}
+                <li><a href="#">Profile </a></li>
+                <li><a href="#">SignOut </a></li>
+
                 {% else %}
-
-                <li><a href="#">SignIn {{title}}</a></li>
-                {% endif %}
-
+                <li><a href="#">SignIn </a></li>
                 <li><a href="#">SignUp</a></li>
+                {% endif %}
                 <li><a href="#">Bag</a></li>
             </ul>
         </div>
     </nav>
+
+
+
+
     {% block content %}{% endblock %}
     
 
