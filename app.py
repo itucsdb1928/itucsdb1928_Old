@@ -1,17 +1,18 @@
-from flask import Flask
-from datetime import datetime
+from flask import Flask , render_template
 app = Flask(__name__)
 
+x = [1,2,3,4,5]
+
 @app.route('/')
+@app.route('/home')
 def homepage():
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
+    return render_template('home.html',posts = x)
 
-    return """
-    <h1>Hello heroku</h1>
-    <p>It is currently {time}.</p>
+@app.route('/login')
+def loginpage():
+    return render_template('home.html', title = "Login Page")
+   
 
-    <img src="http://loremflickr.com/600/400" />
-    """.format(time=the_time)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
