@@ -12,12 +12,20 @@ def homepage():
     global status
     return render_template('home.html',Status =status,title = "Home Page")
 
-@app.route('/SignIn')
+@app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
     global status
     status= 0
     form = LoginForm()
-    return render_template('login.html',Status =status,title = "Login Page", form=form)
+    if form.validate_on_submit():
+        if form.email.data == 'alihan@tutuk.com' and form.password.data == '1234':
+            flash('Başarılı bir şekilde giriş yaptınız!', 'success')
+            status=1
+            return redirect(url_for('homepage'))
+        else:
+            flash('Giriş başarısız. Lütfen mailinizi veya şifrenizi kontrol edin.', 'danger')
+            status=0
+    return render_template('login.html',Status =status,title = "SıgnIn Page", form=form)
 
 @app.route('/SignUp',methods=['GET','POST'])
 def sign_up_page():
@@ -26,8 +34,9 @@ def sign_up_page():
     form=RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
+        status=1
         return redirect(url_for('homepage'))
-    return render_template('register.html',Status=status,title = "Register Page",form= form )
+    return render_template('register.html',Status=status,title = "SıgnUp Page",form= form )
 
 
 
