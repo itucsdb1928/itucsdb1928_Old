@@ -5,6 +5,7 @@ import psycopg2 as dbapi2
 
 
 INIT_STATEMENTS = [
+    """
     CREATE TABLE Account( 
                       AccountId serial PRIMARY KEY, 
                       email VARCHAR (50) UNIQUE NOT NULL, 
@@ -97,6 +98,7 @@ INIT_STATEMENTS = [
                       lostEdit VARCHAR(50),
                       orginalText VARCHAR(100) 
                      ); 
+    """
 ]
 
 
