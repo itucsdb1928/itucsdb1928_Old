@@ -72,32 +72,6 @@ INIT_STATEMENTS = [
                       PublisherID INTEGER REFERENCES Publisher (PublisherID), 
                       AuthorID INTEGER REFERENCES Author (AuthorID)               
                      );   
-    CREATE TABLE Orders( 
-                      OrdersID SERIAL PRIMARY KEY , 
-                      UserID INTEGER REFERENCES Users (UserID), 
-                      BookID INTEGER REFERENCES Books  (BookID), 
-                      TotalAmount NUMERIC(4,2), 
-                      OrderStatusID INTEGER,
-                      OrderAdress INTEGER,
-                      BillingAdress INTEGER
-                     ); 
-    CREATE TABLE OrderStatus( 
-                      OrderStatusID SERIAL PRIMARY KEY REFERENCES Orders (OrdersID), 
-                      Statu VARCHAR(10), 
-                      CargoName VARCHAR(20), 
-                      TrackingNumber INTEGER, 
-                      SendTime TIME
-                     ); 
-    CREATE TABLE BookRewiev( 
-                      BookRewievID SERIAL PRIMARY KEY , 
-                      UserID INTEGER REFERENCES Users (UserID), 
-                      BookID INTEGER REFERENCES Books  (BookID), 
-                      review INTEGER,
-                      PostDate TIME,
-                      UserRating INTEGER,
-                      lostEdit VARCHAR(50),
-                      orginalText VARCHAR(100) 
-                     ); 
     """
 ]
 
