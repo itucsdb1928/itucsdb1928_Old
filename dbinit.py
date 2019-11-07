@@ -6,7 +6,6 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """
-    DROP DATABASE Acoount;
      CREATE TABLE Account( 
                       AccountId serial PRIMARY KEY, 
                       email VARCHAR (50) UNIQUE NOT NULL, 
