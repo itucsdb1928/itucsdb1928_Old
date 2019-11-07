@@ -6,21 +6,18 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """
-     CREATE TABLE Account( 
+   CREATE TABLE Account( 
                       AccountId serial PRIMARY KEY, 
                       email VARCHAR (50) UNIQUE NOT NULL, 
                       password VARCHAR (20) UNIQUE NOT NULL, 
-                      gender VARCHAR (6) NULL , 
-                      IsAdmin INTEGER ,
-                      IsUser INTEGER 
+                      IsAdmin INTEGER 
                      );
     CREATE TABLE Users( 
                       UserID SERIAL PRIMARY KEY REFERENCES Account (AccountId), 
                       name VARCHAR (50) UNIQUE NOT NULL, 
                       surname VARCHAR (50) UNIQUE NOT NULL, 
                       gender VARCHAR (6) NULL , 
-                      age VARCHAR (3) NULL ,
-                      isAdmin VARCHAR (3) NULL      
+                      age VARCHAR (3) NULL      
                      );
     CREATE TABLE Admin( 
                       AdminID SERIAL PRIMARY KEY REFERENCES Account (AccountId), 
@@ -99,6 +96,10 @@ INIT_STATEMENTS = [
                       lostEdit VARCHAR(50),
                       orginalText VARCHAR(100) 
                      ); 
+    INSERT INTO Account (email, password, IsAdmin) 
+    VALUES ('example@gmail.com', '012345',0);
+    INSERT INTO Users (name, surname, gender, age) 
+    VALUES ('Example', 'example', 'male', 15);
   
     """
 ]
