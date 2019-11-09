@@ -63,8 +63,31 @@ INIT_STATEMENTS = [
                       lostEdit VARCHAR(50),
                       orginalText VARCHAR(100) 
                      ); 
+                     
     INSERT INTO Users (name,surname, email,password,isAdmin) 
     VALUES ('admin','admin','admin@gmail.com', 'admin',1);
+
+    INSERT INTO Publisher(name,adress, numberOfbooks) 
+    VALUES ('tonguc','eyub mah.',150);
+
+    INSERT INTO Author(name,surname, numberOfbooks,country) 
+    VALUES ('adam','fawer',10,'USA');
+
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
+    VALUES ('olasılıksız',250,1,1);
+
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
+    VALUES ('oz',350,1,1);
+
+    INSERT INTO Publisher(name,adress, numberOfbooks) 
+    VALUES ('alfa','kadıköy',100);
+
+    INSERT INTO Author(name,surname, numberOfbooks,country) 
+    VALUES ('ahmet','yıldız',5,'Turkey');
+
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
+    VALUES ('Guclu hafıza',325,2,2);
+
     """
 ]
 
