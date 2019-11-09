@@ -6,6 +6,15 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """
+    CREATE TABLE UserContent( 
+                      UserContentID SERIAL PRIMARY KEY , 
+                      Vote INTEGER, 
+                      VoteNum INTEGER,        
+                      Comment VARCHAR(200),
+                      FavBook INTEGER REFERENCES Books (BookID),
+                      FavAuthor INTEGER REFERENCES Author (AuthorID)
+                     );
+                     
     CREATE TABLE Users( 
                       UserID SERIAL PRIMARY KEY, 
                       name VARCHAR (50) UNIQUE NOT NULL, 
@@ -16,15 +25,6 @@ INIT_STATEMENTS = [
                       email VARCHAR (50) UNIQUE NOT NULL,
                       password VARCHAR (20) UNIQUE NOT NULL,
                       isAdmin INTEGER
-                     );
-                     
-    CREATE TABLE UserContent( 
-                      UserContentID SERIAL PRIMARY KEY , 
-                      Vote INTEGER, 
-                      VoteNum INTEGER,        
-                      Comment VARCHAR(200),
-                      FavBook INTEGER REFERENCES Books (BookID),
-                      FavAuthor INTEGER REFERENCES Author (AuthorID)
                      );
                      
     CREATE TABLE Publisher( 
