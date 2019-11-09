@@ -38,7 +38,7 @@ INIT_STATEMENTS = [
                       PageNum INTEGER,
                       BookRewiev INTEGER REFERENCES BookRewiev (BookRewievID) , 
                       PublisherID INTEGER REFERENCES Publisher (PublisherID), 
-                      AuthorID INTEGER REFERENCES Author (AuthorID) 
+                      AuthorID INTEGER REFERENCES Author (AuthorID) ,
                       cover VARBINARY(8000)
                      );  
                                           
