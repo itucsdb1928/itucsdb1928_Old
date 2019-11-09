@@ -29,7 +29,7 @@ INIT_STATEMENTS = [
                       adress VARCHAR(50),
                       numberOfbooks INTEGER , 
                       establishmentDate TIME ,
-                      logo VARBINARY(8000)
+                      logo VARCHAR(50)
                      );
                      
     CREATE TABLE Books( 
@@ -39,7 +39,7 @@ INIT_STATEMENTS = [
                       BookRewiev INTEGER REFERENCES BookRewiev (BookRewievID) , 
                       PublisherID INTEGER REFERENCES Publisher (PublisherID), 
                       AuthorID INTEGER REFERENCES Author (AuthorID) ,
-                      cover VARBINARY(8000)
+                      cover VARCHAR(50)
                      );  
                                           
     CREATE TABLE UserContent( 
