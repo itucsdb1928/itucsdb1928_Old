@@ -1,11 +1,19 @@
+-------------------------------------------------------
+NEW
+
 CREATE TABLE Account( 
                   AccountId serial PRIMARY KEY, 
-                  email VARCHAR (50) UNIQUE NOT NULL, 
+                  username VARCHAR (20) UNIQUE NOT NULL, 
+                  email VARCHAR (50) UNIQUE NOT NULL,
+                  phone VARCHAR (12) ,
                   password VARCHAR (20) UNIQUE NOT NULL, 
                   gender VARCHAR (6) NULL , 
-                  IsAdmin INTEGER ,
-                  IsUser INTEGER 
                  );
+                 
+---------------------------------------------------------
+OLD
+
+
 CREATE TABLE Users( 
                   UserID SERIAL PRIMARY KEY REFERENCES Account (AccountId), 
                   name VARCHAR (50) UNIQUE NOT NULL, 
