@@ -1,16 +1,26 @@
-from flask import Flask ,redirect, render_template,flash,url_for
+from flask import Flask ,redirect, render_template,flash,url_for,current_app,request
 from forms import RegistrationForm,LoginForm
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from urllib.parse import urlparse
+import os
+import psycopg2 as dbapi2
+from arrangement import Database
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
-status=0
+
+db=Database()
+
+status=0 # for navigation bar view 
 
 @app.route('/')
 @app.route('/Home')
 def homepage():
     global status
-    return render_template('home.html',Status =status,title = "Home Page")
+    my_list=db.get_home_page()
+    return render_template('home.html',Status =status,title = "Home Page",results=my_list)
 
 @app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
@@ -46,13 +56,10 @@ def profile_page():
     status=1
     return render_template('home.html',Status=status,title = "Profile Page")
 
-@app.route('/Bag')
-def bag_page():
-    global status
-    return render_template('home.html',Status =status,title = "Bag Page")
-   
+
 
 
 if __name__ == '__main__':
+    
     app.run(debug=True, use_reloader=True)
 

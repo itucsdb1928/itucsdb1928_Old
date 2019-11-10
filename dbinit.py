@@ -41,6 +41,8 @@ INIT_STATEMENTS = [
                       AuthorID INTEGER REFERENCES Author (AuthorID) ,
                       cover VARCHAR(50)
                      );  
+
+                    
                                           
     CREATE TABLE UserContent( 
                       UserContentID SERIAL PRIMARY KEY , 
@@ -73,11 +75,11 @@ INIT_STATEMENTS = [
     INSERT INTO Author(name,surname, numberOfbooks,country) 
     VALUES ('adam','fawer',10,'USA');
 
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
-    VALUES ('olasılıksız',250,1,1);
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
+    VALUES ('olasılıksız',250,1,1,1);
 
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
-    VALUES ('oz',350,1,1);
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
+    VALUES ('oz',350,2,2,2);
 
     INSERT INTO Publisher(name,adress, numberOfbooks) 
     VALUES ('alfa','kadıköy',100);
