@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 
-db=Database()
+#db=Database()
 
 status=0 # for navigation bar view
 
@@ -20,7 +20,7 @@ results = ["x","t"]
 @app.route('/Home')
 def homepage():
     global status
-    my_list=db.get_home_page()
+    #my_list=db.get_home_page()
     return render_template('home.html',Status =status,title = "Home Page",results=my_list)
 
 @app.route('/SignIn',methods=['GET','POST'])
