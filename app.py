@@ -21,7 +21,7 @@ my_list = ["x","t"]
 def homepage():
     global status
     My_list=db.get_home_page()
-    return render_template('home.html',Status =status,title = "Home Page",results=my_list)
+    return render_template('home.html',Status =status,title = "Home Page",results=my_list,titles=My_list)
 
 @app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
