@@ -1,6 +1,6 @@
 from flask import Flask ,redirect, render_template,flash,url_for,current_app,request
 from forms import RegistrationForm,LoginForm
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from urllib.parse import urlparse
 import os
