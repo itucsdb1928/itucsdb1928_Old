@@ -12,7 +12,8 @@ class Database:
 
     def get_home_page(self):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Books.Title,Author.name,Publisher.name FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
+           #query = "SELECT Books.Title,Author.name,Publisher.name FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
+           query = "SELECT Title FROM Books"
            cursor.execute(query)
            playlists = cursor.fetchall()
            cursor.close()
