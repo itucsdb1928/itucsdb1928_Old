@@ -5,13 +5,13 @@ from datetime import datetime
 from urllib.parse import urlparse
 import os
 import psycopg2 as dbapi2
-#from arrangement import Database
+from arrangement import Database
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 
-#db=Database()
+db=Database()
 
 status=0 # for navigation bar view
 
