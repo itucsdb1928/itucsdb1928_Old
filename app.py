@@ -21,6 +21,7 @@ def homepage():
     My_list=db.get_home_page()
     return render_template('home.html',Status =UserId,title = "Home Page",titles=My_list)
 
+
 @app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
     global UserId
