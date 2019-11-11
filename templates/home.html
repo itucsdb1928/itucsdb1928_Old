@@ -1,5 +1,20 @@
 {% extends 'layout.html' %}
 {% block content %}
 <h1>Home Page</h1>
+<table class="table is-hoverable">
+    <tr>
+        <th>Book Name</th>
+        <!--
+        <th>Author</th>
+        <th>Publisher</th> -->
+    </tr>
+    {% for i in results %}
 
+    <tr>
+        <td>{{i}}</td>
+        <!--<td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>-->
+    </tr>
+    {% endfor %}
+</table>
 {% endblock content %}
