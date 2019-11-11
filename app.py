@@ -13,51 +13,48 @@ app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 db=Database()
 
-status=0 # for navigation bar view
-
-my_list = ["x","t"]
+UserId=0 # for navigation bar view
 @app.route('/')
 @app.route('/Home')
 def homepage():
-    global status
+    global UserId
     My_list=db.get_home_page()
-    return render_template('home.html',Status =status,title = "Home Page",results=my_list,titles=My_list)
+    return render_template('home.html',Status =UserId,title = "Home Page",titles=My_list)
 
 @app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
-    global status
-    status= 0
+    global UserId
+    UserId= 0
+    check = True
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'alihan@tutuk.com' and form.password.data == '1234':
+        UserId = db.checkLogin(form.email.data,form.password.data)
+        if UserId:
             flash('Başarılı bir şekilde giriş yaptınız!', 'success')
-            status=1
-            return redirect(url_for('homepage'))
+            return redirect(url_for('profile_page'))
         else:
+            UserID = -1
+            print(UserID)
             flash('Giriş başarısız. Lütfen mailinizi veya şifrenizi kontrol edin.', 'danger')
-            status=0
-    return render_template('login.html',Status =status,title = "SıgnIn Page", form=form)
+    
+    return render_template('login.html',Status =UserId,title = "SıgnIn Page", form=form)
 
 @app.route('/SignUp',methods=['GET','POST'])
 def sign_up_page():
-    global status
-    status= 0
+    global UserId
+    UserId= 0
     form=RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
-        status=1
+        UserId=1
         return redirect(url_for('homepage'))
-    return render_template('register.html',Status=status,title = "SıgnUp Page",form= form )
-
-
+    return render_template('register.html',Status=UserId,title = "SıgnUp Page",form= form )
 
 @app.route('/Profile')
 def profile_page():
-    global status
-    status=1
-    return render_template('home.html',Status=status,title = "Profile Page")
-
-
+    global UserId
+    
+    return render_template('profile.html',Status=UserId,title = "Profile Page")
 
 
 if __name__ == '__main__':
