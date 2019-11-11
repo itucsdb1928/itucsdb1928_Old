@@ -77,15 +77,15 @@ INIT_STATEMENTS = [
 
     INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
     VALUES ('olasılıksız',250,1,1,1);
-
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
-    VALUES ('oz',350,2,2,2);
     
     INSERT INTO Publisher(name,adress, numberOfbooks) 
     VALUES ('alfa','kadıköy',100);
     
     INSERT INTO Author(name,surname, numberOfbooks,country) 
     VALUES ('ahmet','yıldız',5,'Turkey');
+    
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
+    VALUES ('oz',350,2,2,2);
     
     INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
     VALUES ('Guclu hafıza',325,2,2);
