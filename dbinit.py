@@ -41,7 +41,6 @@ INIT_STATEMENTS = [
                       AuthorID INTEGER REFERENCES Author (AuthorID) ,
                       cover VARCHAR(50)
                      );  
-
                     
                                           
     CREATE TABLE UserContent( 
@@ -64,29 +63,21 @@ INIT_STATEMENTS = [
                       password VARCHAR (20) UNIQUE NOT NULL,
                       isAdmin INTEGER
                      );
-
                      
     INSERT INTO Users (name,surname, email,password,isAdmin) 
     VALUES ('admin','admin','admin@gmail.com', 'admin',1);
-
     INSERT INTO Publisher(name,adress, numberOfbooks) 
     VALUES ('tonguc','eyub mah.',150);
-
     INSERT INTO Author(name,surname, numberOfbooks,country) 
     VALUES ('adam','fawer',10,'USA');
-
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
-    VALUES ('olasılıksız',250,1,1,1);
-    
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID ) 
+    VALUES ('olasılıksız',250,1,1);
     INSERT INTO Publisher(name,adress, numberOfbooks) 
     VALUES ('alfa','kadıköy',100);
-    
     INSERT INTO Author(name,surname, numberOfbooks,country) 
     VALUES ('ahmet','yıldız',5,'Turkey');
-    
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID,BookID ) 
-    VALUES ('oz',350,2,2,2);
-    
+    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID ) 
+    VALUES ('oz',350,2,2);
     INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
     VALUES ('Guclu hafıza',325,2,2);
     """
