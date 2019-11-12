@@ -29,3 +29,11 @@ class Database:
                UserID = info[0]
 
        return UserID
+
+
+    def insertNewUser(self,formDate):
+       with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+           query = "SELECT Books.Title,Author.name,Publisher.name FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
+           cursor.execute(query)
+       
+       return True
