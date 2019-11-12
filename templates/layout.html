@@ -20,7 +20,7 @@
 
                 <li class="active"><a href="{{ url_for('homepage') }}">Home</a></li>
 
-                {% if Status==1 %}
+                {% if Status!=0 %}
                 <li><a href="{{ url_for('profile_page') }}">Profile </a></li>
                 <li><a href="{{ url_for('sign_in_page') }}">SignOut </a></li>
 

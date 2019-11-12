@@ -32,7 +32,7 @@ def sign_in_page():
         UserId = db.checkLogin(form.email.data,form.password.data)
         if UserId:
             flash('Başarılı bir şekilde giriş yaptınız!', 'success')
-            return redirect(url_for('profile_page'))
+            #return redirect(url_for('profile_page'))
         else:
             UserID = -1
             print(UserID)
@@ -56,6 +56,17 @@ def profile_page():
     global UserId
     
     return render_template('profile.html',Status=UserId,title = "Profile Page")
+
+@app.route('/Detail',methods=['GET','POST'])
+def detail_page():
+    global UserId
+    if request.method == "POST":
+        book_name=request.form["Book_name"]
+        print(book_name)
+        book_detail=db.get_detail_page(book_name)
+        print(book_detail)
+        return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+    return render_template('home.html',Status =UserId,title = "Home Page")
 
 
 if __name__ == '__main__':
