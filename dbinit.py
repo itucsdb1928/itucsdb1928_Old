@@ -54,13 +54,13 @@ INIT_STATEMENTS = [
                      
     CREATE TABLE Users( 
                       UserID SERIAL PRIMARY KEY, 
-                      name VARCHAR (50) UNIQUE NOT NULL, 
-                      surname VARCHAR (50) UNIQUE NOT NULL, 
+                      name VARCHAR (50) NOT NULL, 
+                      surname VARCHAR (50) NOT NULL, 
                       gender VARCHAR (6) NULL, 
                       age VARCHAR (3) NULL,
                       content INTEGER REFERENCES UserContent (UserContentID),
                       email VARCHAR (50) UNIQUE NOT NULL,
-                      password VARCHAR (20) UNIQUE NOT NULL,
+                      password VARCHAR (20) NOT NULL,
                       isAdmin INTEGER
                      );
                      
