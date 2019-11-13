@@ -1,4 +1,4 @@
-from flask import Flask ,redirect, render_template,flash,url_for,current_app,request
+from flask import Flask, redirect, render_template,flash,url_for,current_app,request
 from forms import RegistrationForm,LoginForm
 #from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -43,12 +43,15 @@ def sign_in_page():
 @app.route('/SignUp',methods=['GET','POST'])
 def sign_up_page():
     global UserId
-    UserId= 0
     form=RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
-        UserId=1
-        return redirect(url_for('homepage'))
+        UserID =  db.insertNewUser(form)
+        print(UserID)
+        if UserID > 0:
+            
+            return redirect(url_for('profile_page'))
+
     return render_template('register.html',Status=UserId,title = "SıgnUp Page",form= form )
 
 @app.route('/Profile')

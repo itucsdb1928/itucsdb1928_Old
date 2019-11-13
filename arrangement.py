@@ -31,9 +31,21 @@ class Database:
        return UserID
 
 
-    def insertNewUser(self,formDate):
-       with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Books.Title,Author.name,Publisher.name FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
-           cursor.execute(query)
-       
-       return True
+    def insertNewUser(self,form):
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "select email from users where email = '%s';" %(form.email.data)
+            cursor.execute(query)
+            info = cursor.fetchone()
+
+        if info is None:
+            with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                query = "INSERT INTO Users (name,surname,gender,age,email,password,isAdmin) VALUES ('%s','%s','%s','%s','%s', '%s',0);" %(form.name.data,form.surname.data,form.gender.data,form.age.data,form.email.data,form.password.data)
+                cursor.execute(query)
+  
+            with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+                query = "SELECT UserID  FROM Users WHERE email='%s';" %(form.email.data)
+                cursor.execute(query)
+                info = cursor.fetchone()
+                return info[0]
+    
+        return 0
