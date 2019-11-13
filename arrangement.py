@@ -13,10 +13,19 @@ class Database:
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
            query = "SELECT Books.Title,Author.name,Publisher.name FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
            cursor.execute(query)
-           playlists = cursor.fetchall()
+           home = cursor.fetchall()
            cursor.close()
          
-       return playlists
+       return home
+
+    def get_detail_page(self,book_name):
+       with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+           query = "SELECT Author.name,Publisher.name,Books.PageNum FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID AND Books.Title='%s'"%(book_name)
+           cursor.execute(query)
+           detail = cursor.fetchone()
+           cursor.close()
+         
+       return detail
 
     def checkLogin(self,email,password):
        UserID = 0
