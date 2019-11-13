@@ -11,7 +11,7 @@ class Database:
     
     def get_home_page(self):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID"
+           query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID"
            cursor.execute(query)
            home = cursor.fetchall()
            cursor.close()
@@ -20,7 +20,7 @@ class Database:
 
     def get_detail_page(self,book_name):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Author.name,Publisher.name,Books.PageNum FROM Books,Author,Publisher  WHERE Books.BookID=Publisher.PublisherID AND Books.BookID=Author.AuthorID AND Books.Title='%s'"%(book_name)
+           query = "SELECT Author.name,Publisher.name,Books.PageNum FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
            cursor.execute(query)
            detail = cursor.fetchone()
            cursor.close()
