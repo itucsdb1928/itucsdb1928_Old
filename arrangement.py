@@ -58,3 +58,4 @@ class Database:
                 return info[0]
     
         return 0
+

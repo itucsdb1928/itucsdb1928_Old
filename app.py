@@ -30,13 +30,9 @@ def sign_in_page():
     form = LoginForm()
     if form.validate_on_submit():
         UserId = db.checkLogin(form.email.data,form.password.data)
-        if UserId:
-            flash('Başarılı bir şekilde giriş yaptınız!', 'success')
-            #return redirect(url_for('profile_page'))
-        else:
-            UserID = -1
-            print(UserID)
-            flash('Giriş başarısız. Lütfen mailinizi veya şifrenizi kontrol edin.', 'danger')
+
+        flash('Başarılı bir şekilde giriş yaptınız!', 'success')
+        return redirect(url_for('profile_page'))
     
     return render_template('login.html',Status =UserId,title = "SıgnIn Page", form=form)
 
@@ -46,9 +42,9 @@ def sign_up_page():
     form=RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
-        UserID =  db.insertNewUser(form)
-        print(UserID)
-        if UserID > 0:
+        UserId =  db.insertNewUser(form)
+        print(UserId)
+        if UserId > 0:
             
             return redirect(url_for('profile_page'))
 
@@ -57,17 +53,8 @@ def sign_up_page():
 @app.route('/Profile')
 def profile_page():
     global UserId
-    
+    print(" User Id In profile func",UserId)
     return render_template('profile.html',Status=UserId,title = "Profile Page")
-def detail_page():
-    global UserId
-    if request.method == "POST":
-        book_name=request.form["Book_name"]
-        print(book_name)
-        book_detail=db.get_detail_page(book_name)
-        print(book_detail)
-        return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
-    return render_template('home.html',Status =UserId,title = "Home Page")
 
 @app.route('/Detail',methods=['GET','POST'])
 def detail_page():
