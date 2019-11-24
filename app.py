@@ -30,9 +30,9 @@ def sign_in_page():
     form = LoginForm()
     if form.validate_on_submit():
         UserId = db.checkLogin(form.email.data,form.password.data)
-
-        flash('Başarılı bir şekilde giriş yaptınız!', 'success')
-        return redirect(url_for('profile_page'))
+        if UserId > 0:
+            flash('Başarılı bir şekilde giriş yaptınız!', 'success')
+            return redirect(url_for('profile_page'))
     
     return render_template('login.html',Status =UserId,title = "SıgnIn Page", form=form)
 
@@ -45,8 +45,7 @@ def sign_up_page():
         UserId =  db.insertNewUser(form)
         print(UserId)
         if UserId > 0:
-            
-            return redirect(url_for('profile_page'))
+             render_template('profile.html',Status=UserId,title = "Profile Page")
 
     return render_template('register.html',Status=UserId,title = "SıgnUp Page",form= form )
 
