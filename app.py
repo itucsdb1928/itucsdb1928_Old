@@ -45,15 +45,19 @@ def sign_up_page():
         UserId =  db.insertNewUser(form)
         print(UserId)
         if UserId > 0:
-             render_template('profile.html',Status=UserId,title = "Profile Page")
+             print("Girdiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+             return redirect(url_for('profile_page'))
+             #render_template('profile.html',Status=UserId,title = "Profile Page")
 
     return render_template('register.html',Status=UserId,title = "SıgnUp Page",form= form )
 
 @app.route('/Profile')
 def profile_page():
     global UserId
+    profile=db.show_profile(UserId)
+    print("*******   ",profile)
     print(" User Id In profile func",UserId)
-    return render_template('profile.html',Status=UserId,title = "Profile Page")
+    return render_template('profile.html',Status=UserId,title = "Profile Page",profile=profile)
 
 @app.route('/Detail',methods=['GET','POST'])
 def detail_page():
@@ -62,11 +66,19 @@ def detail_page():
         book_name=request.form["Book_name"]
         print(book_name)
         book_detail=db.get_detail_page(book_name)
-        print(book_detail)
         return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
     return render_template('home.html',Status =UserId,title = "Home Page")
 
 
+@app.route('/Home',methods=['GET','POST'])
+def search_book():
+    global UserId
+    if request.method == "POST":
+         book_name=request.form["search_book"]
+         print(book_name)
+         book=db.Search(book_name)
+         print(book)
+    return render_template('home.html',Status =UserId,title = "Home Page",titles=book)
 if __name__ == '__main__':
     
     app.run(debug=True, use_reloader=True)

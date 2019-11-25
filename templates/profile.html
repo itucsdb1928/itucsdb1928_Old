@@ -1,4 +1,36 @@
 ﻿{% extends 'layout.html' %}
 {% block content %}
+
+
 <h1>Profile</h1>
-{% endblock content %}
+
+<table class="table is-hoverable">
+    <tr>
+        <th>Name</th>
+        <td>{{profile[0][1]}}</td>
+    </tr>
+
+    <tr>
+        <th>Surname</th>
+        <td>{{profile[0][2]}}</td>
+    </tr>
+
+
+
+    <tr>
+        <th>Gender</th>
+        <td>{{profile[0][3]}}</td>
+    </tr>
+
+    <tr>
+        <th>Age</th>
+        <td>{{profile[0][4]}}</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>{{profile[0][6]}}</td>
+    </tr>
+
+
+    {% endblock content %}

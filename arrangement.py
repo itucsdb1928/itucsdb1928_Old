@@ -27,6 +27,21 @@ class Database:
          
        return detail
 
+    def Search(self,name):
+       with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title LIKE '%%%s%%' "%(name)
+            cursor.execute(query)
+            search = cursor.fetchall()
+            cursor.close()
+         
+       return search
+    def show_profile(self,UserId):
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "SELECT * FROM Users WHERE UserID={}".format(UserId)
+            cursor.execute(query)
+            profile = cursor.fetchall()
+            cursor.close()
+        return profile
     def checkLogin(self,email,password):
        UserID = 0
        info = []
