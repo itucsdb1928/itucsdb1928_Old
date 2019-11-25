@@ -11,7 +11,7 @@ class Database:
     
     def get_home_page(self):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID"
+           query = "SELECT Books.Title,Books.cover FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID"
            cursor.execute(query)
            home = cursor.fetchall()
            cursor.close()

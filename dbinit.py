@@ -110,21 +110,8 @@ INIT_STATEMENTS = [
     VALUES ('Vikki', 'Orable', 'Female', 49, 'vorablen@google.nl', '4tvDEZZI');
     INSERT INTO Users (name, surname, gender, age, email, password)
     VALUES ('Laverne', 'Sanja', 'Female', 21, 'lsanjao@cocolog-nifty.com', 'N88VIM387');
-    INSERT INTO Publisher(name,adress, numberOfbooks) 
-    VALUES ('tonguc','eyub mah.',150);
-    INSERT INTO Author(name,surname, numberOfbooks,country) 
-    VALUES ('adam','fawer',10,'USA');
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID ) 
-    VALUES ('olasılıksız',250,1,1);
-    INSERT INTO Publisher(name,adress, numberOfbooks) 
-    VALUES ('alfa','kadıköy',100);
-    INSERT INTO Author(name,surname, numberOfbooks,country) 
-    VALUES ('ahmet','yıldız',5,'Turkey');
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID ) 
-    VALUES ('oz',350,2,2);
-    INSERT INTO Books(Title,PageNum, PublisherID,AuthorID) 
-    VALUES ('Guclu hafıza',325,2,2);
-    INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Asoka', '96064 Norway Maple Hill', 31, '1/21/1977', 'Cassin LLC');
+   
+INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Asoka', '96064 Norway Maple Hill', 31, '1/21/1977', 'Cassin LLC');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Overhold', '03 Oneill Alley', 70, '10/10/1961', 'Ankunding, Macejkovic and Hansen');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Veribet', '99353 Bashford Drive', 27, '8/2/1967', 'Boyle, McCullough and Macejkovic');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Transcof', '7654 Fisk Pass', 42, '9/17/1979', 'Mann Group');

@@ -17,6 +17,7 @@
 <table class="table is-hoverable">
     <tr>
         <th>Book Name</th>
+        <th>Cover</th>
         <th>Detail</th>
 
     </tr>
@@ -26,8 +27,9 @@
     <tr>
         <form method="POST" name="detail{{i[0]}}" action="/Detail">
             <td name="Book_name">{{i[0]}}</td>
-            <input type="hidden" name="Book_name" value="{{i[0]}}">
 
+            <input type="hidden" name="Book_name" value="{{i[0]}}">
+            <td>{{i[1]}}</td>
             <td>
                 <button class="button is-danger" action="submit" id="detailButton" name="detailButton">See Detail</button>
             </td>
