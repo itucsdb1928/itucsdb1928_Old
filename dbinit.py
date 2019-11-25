@@ -10,14 +10,14 @@ INIT_STATEMENTS = [
                       AuthorID SERIAL PRIMARY KEY , 
                       name VARCHAR(30), 
                       surname VARCHAR(30),
-                      birthDate TIME , 
+                      birthDate DATE , 
                       numberOfbooks INTEGER,
                       country VARCHAR(20)
                      );
     CREATE TABLE BookRewiev( 
                       BookRewievID SERIAL PRIMARY KEY ,
                       review INTEGER,
-                      PostDate TIME,
+                      PostDate DATE,
                       UserRating INTEGER,
                       lostEdit VARCHAR(50),
                       orginalText VARCHAR(100) 
@@ -28,7 +28,7 @@ INIT_STATEMENTS = [
                       name VARCHAR(40), 
                       adress VARCHAR(50),
                       numberOfbooks INTEGER , 
-                      establishmentDate TIME ,
+                      establishmentDate DATE ,
                       companyName VARCHAR(50)
                      );
                      
