@@ -39,7 +39,7 @@ INIT_STATEMENTS = [
                       BookRewiev INTEGER REFERENCES BookRewiev (BookRewievID) , 
                       PublisherID INTEGER REFERENCES Publisher (PublisherID), 
                       AuthorID INTEGER REFERENCES Author (AuthorID) ,
-                      cover VARCHAR(50)
+                      cover VARCHAR(1000)
                      );  
                     
                                           
