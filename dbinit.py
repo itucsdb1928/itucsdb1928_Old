@@ -12,7 +12,7 @@ INIT_STATEMENTS = [
                       surname VARCHAR(30),
                       birthDate DATE , 
                       numberOfbooks INTEGER,
-                      country VARCHAR(20)
+                      country VARCHAR(40)
                      );
     CREATE TABLE BookRewiev( 
                       BookRewievID SERIAL PRIMARY KEY ,
@@ -149,6 +149,106 @@ INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyNa
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Regrant', '7285 Granby Center', 89, '11/15/1973', 'Wilkinson Group');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Ronstring', '3 Mcguire Center', 19, '11/6/1966', 'Cummings, Haley and Carter');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Bigtax', '7 4th Court', 52, '2/5/2000', 'Denesik-Schneider');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Collin', 'Clyant', '6/30/1916', 18, 'South Korea');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Clementina', 'Boatwright', '5/22/1931', 24, 'Portugal');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Alano', 'Colqueran', '1/3/1924', 23, 'Russia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Vin', 'Adamini', '9/27/1946', 16, 'Somalia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Menard', 'Jorcke', '10/16/1950', 20, 'Sweden');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Ilka', 'Kinvan', '7/17/1952', 17, 'Greece');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Dirk', 'Blakiston', '8/10/1936', 6, 'Lithuania');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Starla', 'Berney', '1/29/1981', 12, 'Greece');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Emili', 'Creddon', '8/26/1960', 12, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Alaine', 'Laurentin', '1/5/1954', 19, 'Mexico');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Sonny', 'Favelle', '6/18/1981', 6, 'Peru');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Jennilee', 'De Michetti', '9/20/1926', 18, 'Tajikistan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Hertha', 'Stallon', '3/18/1925', 16, 'Poland');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Magdalene', 'Shannon', '5/31/1961', 7, 'Philippines');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Marylin', 'Larrat', '6/14/1917', 1, 'Azerbaijan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Fred', 'Towe', '3/21/1955', 16, 'Russia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Derrek', 'Berks', '11/14/1922', 13, 'Montserrat');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Sashenka', 'Agnew', '8/11/1949', 19, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Morena', 'Arthey', '12/31/1974', 24, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Faith', 'Cazereau', '5/3/1916', 16, 'Iran');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Stearne', 'Peris', '3/3/1940', 14, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Alisha', 'Jotcham', '5/12/1917', 18, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Dulcea', 'Busfield', '3/9/1918', 9, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Coreen', 'Sidebotham', '5/7/1978', 21, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Kally', 'Lyttle', '7/23/1928', 4, 'Kazakhstan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Flss', 'MacAnespie', '12/31/1911', 15, 'Georgia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Paulie', 'Venus', '4/15/1958', 4, 'Russia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Wit', 'Care', '5/26/1912', 25, 'Philippines');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Anni', 'Torre', '10/14/1936', 12, 'North Korea');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Walden', 'Westnedge', '5/31/1939', 3, 'Nigeria');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Kris', 'Legrand', '6/2/1911', 4, 'Dominican Republic');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Pail', 'Daveridge', '7/30/1952', 10, 'Japan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Nicolai', 'Segges', '11/22/1967', 15, 'Greece');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Ron', 'Beckhouse', '4/8/1924', 18, 'Macedonia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Loutitia', 'Sturt', '5/12/1927', 3, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Mark', 'Huggard', '8/19/1930', 7, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Andris', 'Vigours', '1/18/1978', 9, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Nani', 'Plows', '2/7/1978', 6, 'Central African Republic');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Jock', 'Kepe', '12/22/1918', 20, 'Slovenia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Rodolphe', 'Blachford', '11/28/1952', 9, 'Portugal');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Jamima', 'Rottenbury', '2/18/1922', 25, 'Sweden');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Allianora', 'Crawshaw', '9/14/1975', 22, 'Greece');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Clarice', 'Sondland', '5/8/1978', 1, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Heywood', 'Skyrm', '4/28/1976', 5, 'Peru');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Devin', 'Clackson', '11/14/1955', 12, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Finlay', 'Menier', '12/1/1957', 22, 'Russia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Harri', 'Dieton', '3/14/1967', 10, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Melessa', 'Colebourn', '1/24/1967', 23, 'Thailand');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Stephan', 'Campion', '10/15/1926', 14, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Saloma', 'Norcott', '8/22/1952', 17, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Olive', 'Meiner', '4/16/1915', 19, 'Philippines');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Killy', 'Tallboy', '3/24/1917', 5, 'Portugal');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Loretta', 'Andrin', '2/13/1924', 6, 'Argentina');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Gifford', 'Angel', '6/1/1922', 19, 'Belarus');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Brynna', 'Dell Casa', '5/20/1954', 23, 'Brazil');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Imogen', 'Sergeaunt', '8/1/1961', 23, 'Costa Rica');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Guenna', 'Baptiste', '6/1/1969', 17, 'Cameroon');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Nathanial', 'Penquet', '12/13/1961', 22, 'Peru');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Debra', 'Bendson', '4/3/1914', 2, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Kassey', 'Walthew', '9/17/1982', 21, 'Armenia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Jere', 'Whorton', '6/5/1961', 19, 'Kiribati');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Warden', 'Brunotti', '3/2/1957', 18, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Eduard', 'Stitcher', '7/12/1951', 3, 'Bahamas');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Kara', 'Giovannelli', '11/20/1951', 25, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Rosalinde', 'Lintall', '1/26/1959', 22, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Lise', 'Lardge', '12/18/1938', 20, 'France');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Mureil', 'Bythway', '12/31/1933', 12, 'Japan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Maurise', 'Leak', '8/21/1931', 13, 'South Africa');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Guendolen', 'Bremmell', '9/10/1913', 4, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Oren', 'Sebrook', '2/28/1928', 16, 'Croatia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Terrye', 'Conwell', '8/26/1973', 20, 'Sweden');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Rob', 'Wreford', '1/9/1930', 6, 'Philippines');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Elle', 'Botterill', '10/7/1923', 2, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Becky', 'Stalley', '6/9/1941', 3, 'Mexico');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Ardeen', 'Landrean', '7/29/1953', 20, 'Nigeria');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Meghan', 'Denley', '3/10/1974', 8, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Alleyn', 'Lazarus', '5/9/1943', 21, 'Palestinian Territory');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Mylo', 'Ashburner', '11/15/1918', 20, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Kristofor', 'Olphert', '9/14/1945', 2, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Dario', 'Guard', '5/17/1924', 14, 'Brazil');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Phaedra', 'Saw', '3/12/1955', 6, 'Luxembourg');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Maryann', 'Golsby', '10/25/1913', 4, 'Poland');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Linnie', 'Lincke', '2/6/1942', 12, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Gearalt', 'Bangiard', '11/24/1929', 23, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Bron', 'Froment', '8/23/1918', 1, 'Japan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Burr', 'Woodroff', '8/9/1957', 10, 'Togo');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Britteny', 'Suett', '4/29/1948', 21, 'Thailand');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Pavel', 'Vickar', '1/2/1923', 14, 'Malaysia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Elfrieda', 'Goligly', '10/28/1946', 25, 'Afghanistan');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Launce', 'Lodemann', '3/27/1957', 18, 'Suriname');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Clayborn', 'Souley', '10/15/1934', 19, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Petra', 'Simonian', '2/7/1959', 7, 'Norway');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Donetta', 'Webbe', '12/19/1915', 3, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Evanne', 'Stratford', '12/10/1931', 8, 'Indonesia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Moll', 'Palley', '11/25/1939', 18, 'Colombia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Ramon', 'Arzu', '1/16/1932', 21, 'Bulgaria');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Carlie', 'Sikorski', '9/26/1919', 17, 'Serbia');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Enid', 'Boddis', '10/22/1918', 21, 'China');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Toiboid', 'Tassel', '9/4/1977', 23, 'Sweden');
+INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Piotr', 'Cheetam', '10/5/1973', 22, 'Norway');
 
     """
 ]
