@@ -250,6 +250,7 @@ INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('E
 INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Toiboid', 'Tassel', '9/4/1977', 23, 'Sweden');
 INSERT INTO Author (name, surname, birthDate, numberOfbooks, country) VALUES ('Piotr', 'Cheetam', '10/5/1973', 22, 'Norway');
 
+
     """
 ]
 
