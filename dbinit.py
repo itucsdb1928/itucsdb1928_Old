@@ -6,12 +6,6 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """
-    DROP TABLE Author;
-    DROP TABLE BookRewiev;
-    DROP TABLE Publisher;
-    DROP TABLE Books;
-    DROP TABLE UserContent;
-    DROP TABLE Users;
     CREATE TABLE Author( 
                       AuthorID SERIAL PRIMARY KEY , 
                       name VARCHAR(30), 
