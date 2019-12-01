@@ -9,16 +9,19 @@ from arrangement import Database
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-
-
 db=Database()
 
 UserId=0 # for navigation bar view
+book_name = None
+book_detail =None
+
 @app.route('/')
 @app.route('/Home',methods=['GET','POST'])
 def homepage():
     global UserId
-    
+    global book_name
+    global book_detail
+
     if request.method == "POST":
         if request.form["btn"] == "search":
             book_name=request.form["search_book"]
@@ -29,7 +32,8 @@ def homepage():
             book_name=request.form["Book_name"]
             print(book_name)
             book_detail=db.get_detail_page(book_name)
-            return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+            return redirect(url_for('detail_page'))
+            #return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
     else:
         My_list=db.get_home_page()
     return render_template('home.html',Status =UserId,title = "Home Page",titles=My_list)
@@ -70,7 +74,20 @@ def profile_page():
     print(" User Id In profile func",UserId)
     return render_template('profile.html',Status=UserId,title = "Profile Page",profile=profile)
 
+@app.route('/Detail',methods=['GET','POST'])
+def detail_page():
+    global UserId
+    global book_name
+    global book_detail
 
+    print(UserId,book_name,book_detail)
+    if request.method == "POST":
+        rate = int(request.form['optradio'])
+        
 
+        return redirect(url_for('detail_page'))
+
+    return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+ 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
