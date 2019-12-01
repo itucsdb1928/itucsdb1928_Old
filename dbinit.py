@@ -76,40 +76,7 @@ INIT_STATEMENTS = [
     VALUES ('L;urette', 'O''Cassidy', 'Female', 51, 'locassidy6@4shared.com', 'JNskYpdg');
     INSERT INTO Users (name, surname, gender, age, email, password)
     VALUES ('Vidovic', 'Avesque', 'Male', 34, 'vavesque7@amazon.com', '3Em8lAq60');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Lionello', 'Tippell', 'Male', 39, 'ltippell8@cornell.edu', 'ki3NZPZ');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Sergei', 'Gillani', 'Male', 17, 'sgillani9@buzzfeed.com', '1XXYRPp');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Frasier', 'Weeden', 'Male', 42, 'fweedena@hexun.com', '7VTulLCSQEF9');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Bartolomeo', 'Maddams', 'Male', 56, 'bmaddamsb@moonfruit.com', 'YFcsiuI4');
-    INSERT INTO Users (name, surname, gender, age, email, password)     
-    VALUES ('Liana', 'Whitlow', 'Female', 38, 'lwhitlowc@wisc.edu', 'erj4fyg');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Patricia', 'Buie', 'Female', 44, 'pbuied@domainmarket.com', 'GaIas7');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Chastity', 'Stripp', 'Female', 29, 'cstrippe@so-net.ne.jp', 'xgnVLdg');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Jandy', 'Haldin', 'Female', 39, 'jhaldinf@de.vu', 'JmugRzVE3');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Dolf', 'Stollwerck', 'Male', 33, 'dstollwerckg@i2i.jp', 'Rbwlr4Sr');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Birk', 'Ormiston', 'Male', 35, 'bormistonh@networksolutions.com', 'SOFfvd1MwWk');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Verna', 'Jacqueminet', 'Female', 44, 'vjacquemineti@histats.com', 'O2HG4ud46rj');
-    INSERT INTO Users (name, surname, gender, age, email, password) 
-    VALUES ('Jayme', 'Wathey', 'Female', 33, 'jwatheyj@i2i.jp', 'JKmAkO');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Mikaela', 'Lambell', 'Female', 52, 'mlambellk@google.com.hk', 'N9JYvz');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Barr', 'O''Howbane', 'Male', 34, 'bohowbanel@posterous.com', 'Tm5WdNLJv');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Griff', 'Forster', 'Male', 53, 'gforsterm@jiathis.com', 'cnwcNj9H2A');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Vikki', 'Orable', 'Female', 49, 'vorablen@google.nl', '4tvDEZZI');
-    INSERT INTO Users (name, surname, gender, age, email, password)
-    VALUES ('Laverne', 'Sanja', 'Female', 21, 'lsanjao@cocolog-nifty.com', 'N88VIM387');
+
    
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Asoka', '96064 Norway Maple Hill', 31, '1/21/1977', 'Cassin LLC');
 INSERT INTO Publisher (name, adress, numberOfbooks, establishmentDate, companyName) VALUES ('Overhold', '03 Oneill Alley', 70, '10/10/1961', 'Ankunding, Macejkovic and Hansen');

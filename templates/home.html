@@ -10,13 +10,13 @@
         <div class="column is-one-fifth">
             <input class="input is-info" type="text" name="search_book" id="search_book"  placeholder="Enter Book Name..">
         
-            <button class="button is-link" action='submit'>Search</button>
+            <button class="button is-link" action='submit' name="btn" value="search">Search</button>
        
     </div>
 </form>
 <table class="table is-hoverable">
     <tr>
-        <th>Book Name</th>
+        <th>Book Name falan</th>
         <th>Cover</th>
         <th>Detail</th>
 
@@ -25,13 +25,13 @@
     
       {% for i in titles %}
     <tr>
-        <form method="POST" name="detail{{i[0]}}" action="/Detail">
+        <form method="POST" name="detail{{i[0]}}" action="/Home">
             <td name="Book_name">{{i[0]}}</td>
 
             <input type="hidden" name="Book_name" value="{{i[0]}}">
             <td>{{i[1]}}</td>
             <td>
-                <button class="button is-danger" action="submit" id="detailButton" name="detailButton">See Detail</button>
+                <button class="button is-danger" action="submit" id="detailButton" name="btn" value="detail">See Detail</button>
             </td>
         </form>
     </tr>

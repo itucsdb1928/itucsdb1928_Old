@@ -35,6 +35,7 @@ class Database:
             cursor.close()
          
        return search
+
     def show_profile(self,UserId):
         with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
             query = "SELECT * FROM Users WHERE UserID={}".format(UserId)
@@ -42,6 +43,7 @@ class Database:
             profile = cursor.fetchall()
             cursor.close()
         return profile
+
     def checkLogin(self,email,password):
        UserID = 0
        info = []
