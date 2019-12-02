@@ -14,7 +14,6 @@ class Database:
            query = "SELECT Books.Title,Books.content FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID"
            cursor.execute(query)
            home = cursor.fetchall()
-           cursor.close()
          
        return home
 
@@ -23,7 +22,6 @@ class Database:
            query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum,Books.BookRewiev,Books.BookID FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
            cursor.execute(query)
            detail = cursor.fetchone()
-           cursor.close()
          
        return detail
 
@@ -32,7 +30,6 @@ class Database:
             query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title LIKE '%%%s%%' "%(name)
             cursor.execute(query)
             search = cursor.fetchall()
-            cursor.close()
          
        return search
 
@@ -41,7 +38,7 @@ class Database:
             query = "SELECT * FROM Users WHERE UserID={}".format(UserId)
             cursor.execute(query)
             profile = cursor.fetchall()
-            cursor.close()
+
         return profile
 
     def checkLogin(self,email,password):
@@ -51,8 +48,9 @@ class Database:
            query = "SELECT UserID ,email,password FROM Users WHERE email='%s' and password = '%s';" %(email,password)
            cursor.execute(query)
            info = cursor.fetchone()
-           if info is not None:
-               UserID = info[0]
+
+       if info is not None:
+           UserID = info[0]
 
        return UserID
 
@@ -85,17 +83,39 @@ class Database:
 
         return False
 
-    def checkUser(self,userId):
+    def checkUser(self,userId,bookId):
         info = None
         with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-            query = "SELECT userid FROM bookrewiev where userid = '%d'" %(userId)
+            query = "SELECT userid FROM bookrewiev where userid = '%d' and bookid = %d" %(userId,bookId)
             cursor.execute(query)
             info = cursor.fetchone()
-            if info is None:
-                return True
+        if info is None:
+            return True
         
         return False
 
 
-    def getRateInfo(self,rewievId):
-        return True
+    def getRateInfo(self,bookId):
+        info = None
+        sum = 0
+        avg = 0
+        rates = {1:[0,0],2:[0,0],3:[0,0],4:[0,0],5:[0,0]}
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "SELECT userrating from bookrewiev WHERE bookid = %d" %(bookId)
+            cursor.execute(query)
+            info = cursor.fetchall()
+
+        for i in info:
+          sum += i[0]
+          rates[i[0]][0] += 1
+        
+        voteNum = len(info)
+        for i in range(1,6):
+            if(voteNum):
+                rates[i][1] = int((rates[i][0] / voteNum)*100)
+            else:
+                rates[i][1] = 0
+        
+        if voteNum: avg = (sum / voteNum)
+
+        return (avg,int(avg),voteNum,rates)

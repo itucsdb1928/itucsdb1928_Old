@@ -80,12 +80,14 @@ def detail_page():
     global UserId
     global book_name
     global book_detail 
+
     bookId = book_detail[5]
-   
-    bookRateInfo = db.getRateInfo(book_detail[4])
- 
+    bookRateInfo = db.getRateInfo(bookId)
     detailStat = UserId
-    commentCheck = db.checkUser(UserId)
+    commentCheck = db.checkUser(UserId,bookId)
+
+    print(bookRateInfo)
+
     if(commentCheck == False):
         detailStat = -1
 
@@ -97,7 +99,7 @@ def detail_page():
             if(result):
                 return redirect(url_for('detail_page'))
 
-    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name,rateInfo = bookRateInfo)
  
 
 if __name__ == '__main__':
