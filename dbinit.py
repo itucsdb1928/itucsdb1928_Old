@@ -18,7 +18,7 @@ INIT_STATEMENTS = [
                       BookRewievID SERIAL PRIMARY KEY ,
                       review INTEGER,
                       UserRating INTEGER,
-                      UserComment VARCHAR(50),
+                      UserComment VARCHAR(500),
                       CommentDate DATE 
                      );
                      
@@ -36,7 +36,6 @@ INIT_STATEMENTS = [
                       Title VARCHAR(20),
                       PostDate  DATE,
                       PageNum INTEGER,
-                      AvgRate INTEGER,
                       BookRewiev INTEGER REFERENCES BookRewiev (BookRewievID) , 
                       PublisherID INTEGER REFERENCES Publisher (PublisherID), 
                       AuthorID INTEGER REFERENCES Author (AuthorID) ,
@@ -66,7 +65,8 @@ INIT_STATEMENTS = [
                      );
 
     ALTER TABLE BookRewiev ADD COLUMN UserID INTEGER REFERENCES Users (UserID);
-                     
+    ALTER TABLE BookRewiev ADD COLUMN BookID INTEGER REFERENCES Books (BookID);       
+    
     INSERT INTO Users (name,surname, email,password,isAdmin) 
     VALUES ('admin','admin','admin@gmail.com', 'admin',1);
     INSERT INTO Users (name, surname, gender, age, email, password)
