@@ -88,7 +88,7 @@
     </div>
 </div>
 
-<form action="/Detail" method="POST">
+<form style="text-align: center;" action="/Detail" method="POST">
     <label class="radio-inline">
         <h3>Rate this book </h3>
     </label>
@@ -107,9 +107,15 @@
     <label class="radio-inline">
         <input type="radio" name="optradio" value="5">5
     </label>
+    <label class="radio-inline">
+        <h3>Comment</h3>
+        <textarea name="comment" rows="3" cols="30" maxlength = "500">Comment Box.</textarea>
+    </label>
+    {% if Status > 0 %}
     <label class="radio-inline" name="btn" value="ratingBtn">
         <input type="submit">
     </label>
+    {% endif %}
 </form>
 <div>
 </div>

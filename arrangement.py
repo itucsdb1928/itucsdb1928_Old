@@ -20,7 +20,7 @@ class Database:
 
     def get_detail_page(self,book_name):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
+           query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum,Books.BookRewiev,Books.BookID FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
            cursor.execute(query)
            detail = cursor.fetchone()
            cursor.close()
@@ -76,3 +76,26 @@ class Database:
     
         return 0
 
+    def insertRate(self,userId,bookId,form):
+        info = None
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+           query = "INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (%s, %s ,%s,'%s');" %(userId,bookId,form['optradio'],form['comment'])
+           cursor.execute(query)
+           return True
+
+        return False
+
+    def checkUser(self,userId):
+        info = None
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "SELECT userid FROM bookrewiev where userid = '%d'" %(userId)
+            cursor.execute(query)
+            info = cursor.fetchone()
+            if info is None:
+                return True
+        
+        return False
+
+
+    def getRateInfo(self,rewievId):
+        return True

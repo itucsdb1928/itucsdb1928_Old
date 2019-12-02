@@ -74,20 +74,32 @@ def profile_page():
     print(" User Id In profile func",UserId)
     return render_template('profile.html',Status=UserId,title = "Profile Page",profile=profile)
 
+
 @app.route('/Detail',methods=['GET','POST'])
 def detail_page():
     global UserId
     global book_name
-    global book_detail
-
-    print(UserId,book_name,book_detail)
-    if request.method == "POST":
-        rate = int(request.form['optradio'])
-        
-
-        return redirect(url_for('detail_page'))
-
-    return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+    global book_detail 
+    bookId = book_detail[5]
+   
+    bookRateInfo = db.getRateInfo(book_detail[4])
  
+    detailStat = UserId
+    commentCheck = db.checkUser(UserId)
+    if(commentCheck == False):
+        detailStat = -1
+
+    if(detailStat > 0):
+        if request.method == "POST":
+            userWiev = request.form
+            print(userWiev)
+            result = db.insertRate(UserId,bookId,userWiev)
+            if(result):
+                return redirect(url_for('detail_page'))
+
+    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
+ 
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
+
