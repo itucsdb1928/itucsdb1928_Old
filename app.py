@@ -11,80 +11,65 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 db=Database()
 
-UserId=0 # for navigation bar view
-book_name = None
-book_detail =None
-
 @app.route('/')
 @app.route('/Home',methods=['GET','POST'])
 def homepage():
-    global UserId
-    global book_name
-    global book_detail
 
     if request.method == "POST":
         if request.form["btn"] == "search":
-            book_name=request.form["search_book"]
-            print(book_name)
-            My_list=db.Search(book_name)
+            db.book_name=request.form["search_book"]
+            print(db.book_name)
+            My_list=db.Search(db.book_name)
         elif request.form["btn"] == "detail":
             print("detail")
-            book_name=request.form["Book_name"]
-            print(book_name)
-            book_detail=db.get_detail_page(book_name)
+            db.book_name=request.form["Book_name"]
+            print(db.book_name)
+            db.book_detail=db.get_detail_page(db.book_name)
             return redirect(url_for('detail_page'))
-            #return render_template('detail.html',Status=UserId,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name)
     else:
         My_list=db.get_home_page()
-    return render_template('home.html',Status =UserId,title = "Home Page",titles=My_list)
+    return render_template('home.html',Status =db.UserId,title = "Home Page",titles=My_list)
 
 
 @app.route('/SignIn',methods=['GET','POST'])
 def sign_in_page():
-    global UserId
-    UserId= 0
+    db.UserId= 0
     check = True
     form = LoginForm()
     if form.validate_on_submit():
-        UserId = db.checkLogin(form.email.data,form.password.data)
-        if UserId > 0:
+        db.UserId = db.checkLogin(form.email.data,form.password.data)
+        if db.UserId > 0:
             flash('Başarılı bir şekilde giriş yaptınız!', 'success')
             return redirect(url_for('profile_page'))
     
-    return render_template('login.html',Status =UserId,title = "SıgnIn Page", form=form)
+    return render_template('login.html',Status =db.UserId,title = "SıgnIn Page", form=form)
 
 @app.route('/SignUp',methods=['GET','POST'])
 def sign_up_page():
-    global UserId
     form=RegistrationForm()
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
-        UserId =  db.insertNewUser(form)
+        db.UserId =  db.insertNewUser(form)
         print(UserId)
-        if UserId > 0:
+        if db.UserId > 0:
              return redirect(url_for('profile_page'))
 
-    return render_template('register.html',Status=UserId,title = "SıgnUp Page",form= form )
+    return render_template('register.html',Status=db.UserId,title = "SıgnUp Page",form= form )
 
 @app.route('/Profile')
 def profile_page():
-    global UserId
-    profile=db.show_profile(UserId)
+    profile=db.show_profile(db.UserId)
     print("*******   ",profile)
-    print(" User Id In profile func",UserId)
-    return render_template('profile.html',Status=UserId,title = "Profile Page",profile=profile)
+    print(" User Id In profile func",db.UserId)
+    return render_template('profile.html',Status=db.UserId,title = "Profile Page",profile=profile)
 
 
 @app.route('/Detail',methods=['GET','POST'])
 def detail_page():
-    global UserId
-    global book_name
-    global book_detail 
-
-    bookId = book_detail[5]
+    bookId = db.book_detail[5]
     bookRateInfo = db.getRateInfo(bookId)
-    detailStat = UserId
-    commentCheck = db.checkUser(UserId,bookId)
+    detailStat = db.UserId
+    commentCheck = db.checkUser(db.UserId,bookId)
 
     print(bookRateInfo)
 
@@ -95,11 +80,11 @@ def detail_page():
         if request.method == "POST":
             userWiev = request.form
             print(userWiev)
-            result = db.insertRate(UserId,bookId,userWiev)
+            result = db.insertRate(db.UserId,bookId,userWiev)
             if(result):
                 return redirect(url_for('detail_page'))
 
-    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(book_name),details=book_detail,name=book_name,rateInfo = bookRateInfo)
+    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(db.book_name),details=db.book_detail,name=db.book_name,rateInfo = bookRateInfo)
  
 
 if __name__ == '__main__':

@@ -8,6 +8,9 @@ class Database:
                     host="ec2-174-129-41-127.compute-1.amazonaws.com"):
         self.con = psycopg2.connect(database=dbname, user=user, password=password, host=host)
         self.cur = self.con.cursor()
+        self.UserId = 0
+        self.book_name = None
+        self.book_detail = None
     
     def get_home_page(self):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
