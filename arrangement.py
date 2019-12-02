@@ -1,6 +1,6 @@
 import psycopg2
 import psycopg2.extras
-
+from datetime import date
 
 class Database:
     def __init__(self, dbname="d9qfricrmj8vii", user="tnivydbyztjmgh",	 
@@ -77,10 +77,10 @@ class Database:
     
         return 0
 
-    def insertRate(self,userId,bookId,form):
+    def insertRate(self,userId,bookId,form,today):
         info = None
         with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (%s, %s ,%s,'%s');" %(userId,bookId,form['optradio'],form['comment'])
+           query = "INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment,commentdate) VALUES (%s, %s ,%s,'%s','%s');" %(userId,bookId,form['optradio'],form['comment'],today)
            cursor.execute(query)
            return True
 
@@ -98,16 +98,17 @@ class Database:
         return False
 
 
-    def getRateInfo(self,bookId):
+    def getRewiev(self,bookId):
         info = None
         sum = 0
         avg = 0
         rates = {1:[0,0],2:[0,0],3:[0,0],4:[0,0],5:[0,0]}
         with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-            query = "SELECT userrating from bookrewiev WHERE bookid = %d" %(bookId)
+            query = "SELECT bookrewiev.userrating,bookrewiev.usercomment,users.name,bookrewiev.commentdate from bookrewiev,users WHERE bookrewiev.userid = users.userid and  bookid =  %d" %(bookId)
             cursor.execute(query)
             info = cursor.fetchall()
 
+        #print("date ex: %s"%(d))
         for i in info:
           sum += i[0]
           rates[i[0]][0] += 1
@@ -120,5 +121,5 @@ class Database:
                 rates[i][1] = 0
         
         if voteNum: avg = (sum / voteNum)
-
-        return (avg,int(avg),voteNum,rates)
+        
+        return (avg,int(avg),voteNum,rates,info)

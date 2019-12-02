@@ -77,6 +77,11 @@
     background-color: #f44336;
 }
 
+.user_name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */
 @media (max-width: 400px) {

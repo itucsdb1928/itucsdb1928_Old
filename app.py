@@ -6,6 +6,8 @@ from urllib.parse import urlparse
 import os
 import psycopg2 as dbapi2
 from arrangement import Database
+from datetime import date
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -67,7 +69,8 @@ def profile_page():
 @app.route('/Detail',methods=['GET','POST'])
 def detail_page():
     bookId = db.book_detail[5]
-    bookRateInfo = db.getRateInfo(bookId)
+    today = date.today()
+    bookRateInfo = db.getRewiev(bookId)
     detailStat = db.UserId
     commentCheck = db.checkUser(db.UserId,bookId)
 
@@ -79,12 +82,13 @@ def detail_page():
     if(detailStat > 0):
         if request.method == "POST":
             userWiev = request.form
+            today = today.strftime("%m/%d/%Y")
             print(userWiev)
-            result = db.insertRate(db.UserId,bookId,userWiev)
+            result = db.insertRate(db.UserId,bookId,userWiev,today)
             if(result):
                 return redirect(url_for('detail_page'))
 
-    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(db.book_name),details=db.book_detail,name=db.book_name,rateInfo = bookRateInfo)
+    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(db.book_name),details=db.book_detail,name=db.book_name,rateInfo = bookRateInfo,today=today)
  
 
 if __name__ == '__main__':
