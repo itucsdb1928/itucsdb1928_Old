@@ -175,10 +175,10 @@ INSERT INTO Books (Title, PageNum, PublisherID, AuthorID, Content) VALUES ('Prod
 INSERT INTO Books (Title, PageNum, PublisherID, AuthorID, Content) VALUES ('Ronstring', 251, 6, 17, 'Duis at velit eu est congue elementum.');
 
 
-INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (1, 1 ,2,'kotu');
-INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (2, 1 ,3,'idare eder');
-INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (1, 2 ,4,'idare eder');
-INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (2, 2 ,5,'cok ii');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment,commentdate) VALUES (1, 1 ,2,'kotu','21/1/2019');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment,commentdate) VALUES (2, 1 ,3,'idare eder','19/9/2019');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment,commentdate) VALUES (1, 2 ,4,'idare eder','15/11/2019');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment,commentdate) VALUES (2, 2 ,5,'cok ii','30/11/2019');
 
 
     """
