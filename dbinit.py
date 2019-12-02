@@ -1208,6 +1208,12 @@ INSERT INTO Books (Title, PageNum, PublisherID, AuthorID, Content) VALUES ('Prod
 INSERT INTO Books (Title, PageNum, PublisherID, AuthorID, Content) VALUES ('Ronstring', 251, 22, 84, 'Duis at velit eu est congue elementum.');
 
 
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (1, 1 ,2,'kotu');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (2, 1 ,3,'idare eder');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (1, 2 ,4,'idare eder');
+INSERT INTO bookrewiev (UserID,BookID,UserRating,UserComment) VALUES (2, 2 ,5,'cok ii');
+
+
     """
 ]
 
