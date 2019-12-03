@@ -92,7 +92,7 @@ def detail_page():
             newContent = request.form['comment']
             db.book_detail[4] = newContent 
             db.updateBookContent(bookId,newContent)
-            return redirect(url_for('detail_page'))
+            return redirect(url_for('homepage'))
 
     return render_template('detail.html',Status=detailStat,user=db.UserId,title = " %s Detail Page"%(db.book_name),details=db.book_detail,
                            name=db.book_name,rateInfo = bookRateInfo,today=today) 
