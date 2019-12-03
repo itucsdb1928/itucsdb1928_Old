@@ -14,7 +14,7 @@ class Database:
     
     def get_home_page(self):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Books.Title,Books.content FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID"
+           query = "SELECT Books.Title,Books.content FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID ORDER BY bookid"
            cursor.execute(query)
            home = cursor.fetchall()
          
@@ -22,7 +22,7 @@ class Database:
 
     def get_detail_page(self,book_name):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-           query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum,Books.BookRewiev,Books.BookID FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
+           query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum,Books.content,Books.BookID FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
            cursor.execute(query)
            detail = cursor.fetchone()
          
@@ -123,3 +123,10 @@ class Database:
         if voteNum: avg = (sum / voteNum)
         
         return (avg,int(avg),voteNum,rates,info)
+
+    def updateBookContent(self,bookId,newComment):
+        info = None
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "UPDATE books SET content = '%s' WHERE bookid = %d" %(newComment,bookId)
+            cursor.execute(query)
+        

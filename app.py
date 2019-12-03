@@ -79,17 +79,23 @@ def detail_page():
     if(commentCheck == False):
         detailStat = -1
 
-    if(detailStat > 0):
-        if request.method == "POST":
+    if request.method == "POST":
+        print("-----Form--", request.form["btn"])
+        if request.form["btn"] == "ratingBtn" :
             userWiev = request.form
             today = today.strftime("%m/%d/%Y")
             print(userWiev)
             result = db.insertRate(db.UserId,bookId,userWiev,today)
             if(result):
                 return redirect(url_for('detail_page'))
+        elif request.form["btn"] == "updateBtn" :
+            newContent = request.form['comment']
+            db.book_detail[4] = newContent 
+            db.updateBookContent(bookId,newContent)
+            return redirect(url_for('detail_page'))
 
-    return render_template('detail.html',Status=detailStat,title = " %s Detail Page"%(db.book_name),details=db.book_detail,name=db.book_name,rateInfo = bookRateInfo,today=today)
- 
+    return render_template('detail.html',Status=detailStat,user=db.UserId,title = " %s Detail Page"%(db.book_name),details=db.book_detail,
+                           name=db.book_name,rateInfo = bookRateInfo,today=today) 
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
