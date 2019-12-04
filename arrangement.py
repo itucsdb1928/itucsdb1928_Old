@@ -20,6 +20,12 @@ class Database:
          
        return home
 
+    # def update_rewiev(self,Bookid):
+    #     with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+    #         query = ""
+    #         cursor.execute(query)
+
+
     def get_detail_page(self,book_name):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
            query = "SELECT Author.name,Author.surname,Publisher.name,Books.PageNum,Books.content,Books.BookID FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title='%s'"%(book_name)
@@ -30,7 +36,7 @@ class Database:
 
     def Search(self,name):
        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
-            query = "SELECT Books.Title FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title LIKE '%%%s%%' "%(name)
+            query = "SELECT Books.Title,Books.content FROM Books,Author,Publisher  WHERE Books.PublisherID=Publisher.PublisherID AND Books.AuthorID=Author.AuthorID AND Books.Title LIKE '%%%s%%' "%(name)
             cursor.execute(query)
             search = cursor.fetchall()
          
@@ -43,6 +49,18 @@ class Database:
             profile = cursor.fetchall()
 
         return profile
+
+    def edit_profile(self,name,surname, age, gender, email, Userid):
+        with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+            query = "UPDATE Users SET name='{}',surname='{}',age={},gender='{}',email='{}'WHERE UserID={};".format(name, surname, age, gender, email, Userid)
+            cursor.execute(query)
+
+    # def delete_profile(self, Userid):
+    #     with self.con.cursor(cursor_factory=psycopg2.extras.DictCursor) as cursor:
+    #         query = "DELETE FROM Users WHERE UserID={};".format(Userid)
+    #         cursor.execute(query)
+
+
 
     def checkLogin(self,email,password):
        UserID = 0

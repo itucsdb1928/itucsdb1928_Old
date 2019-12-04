@@ -1,6 +1,6 @@
 from flask import Flask, redirect, render_template,flash,url_for,current_app,request
 from forms import RegistrationForm,LoginForm
-#from flask_sqlalchemy import SQLAlchemy
+
 from datetime import datetime
 from urllib.parse import urlparse
 import os
@@ -27,6 +27,7 @@ def homepage():
             db.book_name=request.form["Book_name"]
             print(db.book_name)
             db.book_detail=db.get_detail_page(db.book_name)
+            #db.update_rewiev(db.book_name)
             return redirect(url_for('detail_page'))
     else:
         My_list=db.get_home_page()
@@ -72,10 +73,23 @@ def profile_page():
 def edit_profile_page():
     profile = db.show_profile(db.UserId)
     if request.method == "POST":
+
         if request.form["btn"] == "cancel" :
             return redirect(url_for('profile_page'))
         elif request.form["btn"] == "save_changes" :
+            name = request.form["name"]
+            surname = request.form["surname"]
+            gender = request.form["gender"]
+            age = request.form["age"]
+            email = request.form["email"]
+            db.edit_profile(name,surname,gender,age,email,db.UserId)
+            print(name,surname,gender,age,email)
             return redirect(url_for('profile_page'))
+
+        # elif request.form["btn"] == "delete_profile":
+        #     db.delete_profile(db.UserId)
+        #     db.UserId=0
+        #     return redirect(url_for('sign_in_page'))
 
 
     return render_template('edit_profile.html', Status=db.UserId, title="Edit Profile Page", profile=profile)
