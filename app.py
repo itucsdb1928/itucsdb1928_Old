@@ -57,12 +57,28 @@ def sign_up_page():
 
     return render_template('register.html',Status=db.UserId,title = "SıgnUp Page",form= form )
 
-@app.route('/Profile')
+@app.route('/Profile',methods=['GET','POST'])
 def profile_page():
     profile=db.show_profile(db.UserId)
+    if request.method == "POST":
+        if request.form["btn"] == "edit_profile" :
+            return redirect(url_for('edit_profile_page'))
+
     print("*******   ",profile)
     print(" User Id In profile func",db.UserId)
-    return render_template('profile.html',Status=db.UserId,title = "Profile Page",profile=profile)
+    return render_template('profile.html', Status=db.UserId, title = "Profile Page", profile=profile)
+
+@app.route('/EditProfile',methods=['GET','POST'])
+def edit_profile_page():
+    profile = db.show_profile(db.UserId)
+    if request.method == "POST":
+        if request.form["btn"] == "cancel" :
+            return redirect(url_for('profile_page'))
+        elif request.form["btn"] == "save_changes" :
+            return redirect(url_for('profile_page'))
+
+
+    return render_template('edit_profile.html', Status=db.UserId, title="Edit Profile Page", profile=profile)
 
 
 @app.route('/Detail',methods=['GET','POST'])
