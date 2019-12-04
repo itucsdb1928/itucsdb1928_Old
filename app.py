@@ -52,7 +52,6 @@ def sign_up_page():
     if form.validate_on_submit():
         flash(f'Account created for {form.username.data}!', 'success')
         db.UserId =  db.insertNewUser(form)
-        print(UserId)
         if db.UserId > 0:
              return redirect(url_for('profile_page'))
 
